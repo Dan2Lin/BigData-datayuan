@@ -20,6 +20,22 @@ var Common = {
     formatDate:function(str){
         str = str.replace(/-/g,"/");
         return new Date(str);
+    },
+    checkThumbnail:function(str){
+        if(str){
+            return "http://www.datayuan.cn"+str;
+        }else{
+            return "";
+        }
+    },
+    checkTitle:function(container){
+        var newTitle = container.find("h2").text();
+        var titleStr = container.find("h2").html();
+        if(titleStr.length>100){
+             var firstIndex = titleStr.indexOf("<div");
+             newTitle = titleStr.substr(0,firstIndex);
+        }
+        return newTitle;
     }
 }
 module.exports = Common;

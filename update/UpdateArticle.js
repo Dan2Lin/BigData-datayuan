@@ -1,8 +1,8 @@
 var request = require("request");
 var cheerio = require("cheerio");
 var Common = require("../Common.js");
-var loader = require("../../iRobots/loader.js");
-var DB = require("../../iRobots/db.js");
+var loader = require("../iRobots/loader.js");
+var DB = require("../iRobots/db.js");
 var ArticelDetail = require("./ArticleDetail");
 var dbUrl = "10.82.0.1";
 var dbName = "bigdata";
@@ -10,8 +10,9 @@ var dbTable = "datayuan";
 var db = new DB(dbUrl,dbName);
 var url = "http://www.datayuan.cn/";
 var articleList = [];
-var UpdateArticleList = {
+var UpdateArticle = {
     getUpdateAticleList:function(){
+        console.log("enter updateArticleList");
         var $this = this;
         return loader.getDOM(url).then(function($){
             $this.parseHtml($);
@@ -37,12 +38,12 @@ var UpdateArticleList = {
                 var $detailUrl = $me.find(".wz-div-img a");
                 var item = {
                     title:$title.text().trim(),
-                    source:$source.text(),
+                    author:$source.text(),
                     createDate:$createDate,
                     abstract:Common.getAbstract($abstract,$),
                     thumbnail:"http://www.datayuan.cn"+$thumbnail.attr('src'),
                     url:$detailUrl.attr('href'),
-                    cid:$me.attr('id'),
+                    isNew:true,
                     loaded:true
                 }
                 try{
@@ -51,6 +52,7 @@ var UpdateArticleList = {
                         item.id = id;
                         ArticelDetail.getAticleDetail(item.url).then(function(detail){
                             item.daodu = detail.daodu;
+                            item.html = detail.html;
                             item.content = detail.content;
                         }).then(function(){
                             itemList.push(item);
@@ -72,8 +74,8 @@ var UpdateArticleList = {
         })
     }
 }
-UpdateArticleList.getUpdateAticleList();
-module.exports = UpdateArticleList;
+UpdateArticle.getUpdateAticleList();
+module.exports = UpdateArticle;
 
 
 

@@ -1,0 +1,28 @@
+{
+  "name": "bigdata-datayuan",
+  "version": "1.0.0",
+  "description": "this is a spraw program of www.datayuan.cn",
+  "main": "update/UpdateArticle.js",
+  "dependencies": {
+    "bufferhelper": "^0.2.1",
+    "cheerio": "^0.22.0",
+    "debug": "^2.5.1",
+    "iconv-lite": "^0.4.15",
+    "mongodb": "^2.2.19",
+    "request": "^2.79.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dan2Lin/BigData-datayuan.git"
+  },
+  "author": "Lindandan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dan2Lin/BigData-datayuan/issues"
+  },
+  "homepage": "https://github.com/Dan2Lin/BigData-datayuan#readme"
+}
