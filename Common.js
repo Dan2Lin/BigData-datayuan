@@ -36,6 +36,11 @@ var Common = {
              newTitle = titleStr.substr(0,firstIndex);
         }
         return newTitle;
-    }
+    },
+	formatHtml:function(html){
+	   var newHtml = html.replace(/src="\/u\/cms/g,'src="http://www.datayuan.cn/u/cms');
+	   return newHtml; 
+	}
+	
 }
 module.exports = Common;

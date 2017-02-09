@@ -19,7 +19,7 @@ var ArticleDetail = {
         var content = container.find("#divcontent").text();
         var detail = {
             daodu:daodu,
-            html:html,
+            html:Common.formatHtml(html),
             content:content
         }
         return detail;
